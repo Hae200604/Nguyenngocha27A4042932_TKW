@@ -5,17 +5,65 @@
     <title>Bài tập HTML + JS</title>
 </head>
 <body>
-    <div id="kq"></div>
+    <form>
+        <label>
+            Họ tên:
+            <input type="text" name="username" id="fullname">
+        </label>
+        <label>
+            Mã sinh viên:
+            <input type="text" name="MSV" id="studentid">
+        </label>
+        <button type="button" onclick="xuly()">OK</button>
+    </form>
+    <h3>Kết quả</h3>
+    <p id="kq"></p>
     <script>
-            let fullName = "Nguyen Ngoc Ha"
-            let studentId = "27A4042932"
-            let faculty = "CNTT"
+        function xuly(){
+            let fullName = document.getElementById("fullname").value.trim();
+            let studentId = document.getElementById("studentid").value.trim();
+            let facultyCode = studentId.substring(2,6);
+            let faculty="";
+            switch (facultyCode) {
+                case "A401":
+                    faculty = "Ngân hàng";
+                    break;
+                case "A402":
+                    faculty = "Kế toán và kiểm toán";
+                    break;
+                case "A403":
+                    faculty = "Quản trị kinh doanh";
+                    break;
+                case "A404":
+                    faculty = "Công nghệ thông tin và kinh tế số";
+                    break;
+                case "A405":
+                    faculty = "Kinh doanh quốc tế";
+                    break;
+                case "A406":
+                    faculty = "Luật";
+                    break;
+                case "A407":
+                    faculty = "Kinh tế";
+                    break;
+                case "A408":
+                    faculty = "Khoa học dữ liệu";
+                    break;
+                case "A751":
+                    faculty = "Ngôn ngữ";
+                    break;
+                default:
+                    faculty = "Không xác định";
+            }
             let arr = fullName.toLowerCase().split(" ");
             let ten = arr[arr.length - 1]; 
-            let ho = arr[0].charAt(0); 
-            let dem = arr[1].charAt(0);
+            let ho = arr[0]; 
+            let dem= "";
+            for(let i=1;i<arr.length-1;i++){
+                dem+=arr[i].charAt(0);
+            }
             
-            let email = ten + ho +dem+ "."+studentId.toLowerCase()+"@hvnh.edu.vn";
+            let email = ten + ho.charAt(0) +dem+"."+studentId+ "@hvnh.edu.vn";
             let coursePeriod = studentId.substring(0, 2);
 
 
@@ -32,7 +80,7 @@
             ", bạn là sinh viên khóa " + coursePeriod +
             ", khoa " + faculty + ", mã sinh viên "+studentId+
             ", tổng 4 số cuối là " + sum;
-
+        }
             
         
     </script>
