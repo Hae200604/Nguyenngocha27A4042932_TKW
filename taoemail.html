@@ -12,12 +12,12 @@
             let faculty = "CNTT"
             let arr = fullName.toLowerCase().split(" ");
             let ten = arr[arr.length - 1]; 
-            let ho = arr[0]; 
+            let ho = arr[0].charAt(0); 
             let dem= "";
             for(int i=1;i<arr.length-1;i++){
                 dem+=arr[i].charAt(0);
             }
-            let email = ten + ho.charAt(0) +dem+ "."+studentId.toLowerCase()+"@hvnh.edu.vn";
+            let email = ten + ho +dem+ "."+studentId.toLowerCase()+"@hvnh.edu.vn";
             let coursePeriod = studentId.substring(0, 2);
 
 
