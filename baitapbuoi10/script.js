@@ -1,4 +1,4 @@
-// ================== CLASS ==================
+
 class SinhVien {
     constructor(maSV, hoTen) {
         this.maSV = maSV;
@@ -9,7 +9,7 @@ class SinhVien {
     }
 }
 
-// ================== TẠO EMAIL ==================
+
 function taoemail(fullName, studentId){
     let arr = fullName.toLowerCase().split(" ");
     let ten = arr[arr.length - 1]; 
@@ -24,7 +24,7 @@ function taoemail(fullName, studentId){
     return email;
 }
 
-// ================== KHOA ==================
+
 function khoa(studentId){
     let facultyCode = studentId.substring(2,6);
     let faculty="";
@@ -53,13 +53,12 @@ function khoa(studentId){
     return faculty;
 }
 
-// ================== KHÓA HỌC ==================
+
 function layKhoaHoc(studentId){
     let year = studentId.substring(0,2);
     return "K" + year;
 }
 
-// ================== ĐỌC EXCEL ==================
 function readExcel(file) {
     const reader = new FileReader();
 
@@ -83,7 +82,6 @@ function readExcel(file) {
     reader.readAsArrayBuffer(file);
 }
 
-// ================== HIỂN THỊ ==================
 function hienThi(ds) {
     let table = document.getElementById("table");
 
@@ -97,17 +95,18 @@ function hienThi(ds) {
         </tr>
     `;
 
-    ds.forEach(sv => {
-        html += `
-            <tr>
-                <td>${sv.maSV}</td>
-                <td>${sv.hoTen}</td>
-                <td>${sv.email}</td>
-                <td>${sv.khoa}</td>
-                <td>${sv.khoaHoc}</td>
-            </tr>
-        `;
-    });
+   for (let i = 0; i < ds.length; i++) {
+    let sv = ds[i];
+    html += `
+        <tr>
+            <td>${sv.maSV}</td>
+            <td>${sv.hoTen}</td>
+            <td>${sv.email}</td>
+            <td>${sv.khoa}</td>
+            <td>${sv.khoaHoc}</td>
+        </tr>
+    `;
+}
 
     table.innerHTML = html;
 }
